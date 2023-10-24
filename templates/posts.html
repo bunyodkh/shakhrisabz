@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+{% load extras %}
+
+{% block content %}
+
+    <header class="full-bleed">
+        {% categories %}
+    </header>
+
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'records:index' %}">Главная</a></li>
+        <li><p>Все публикации</p></li>
+    </ul>
+
+    <main class="page-news">
+        <h1>Публикации</h1>
+        <ul class="card">
+            {% for post in posts %}
+            	<li>
+                <article>
+                    <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+                    <time>{{ post.date }}</time> <span>{{ post.posttype_verbose }}</span>
+                    <p>{{ post.description }}</p>
+                </article>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+{% endblock content %}

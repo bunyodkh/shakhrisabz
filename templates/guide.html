@@ -1,0 +1,120 @@
+{% extends 'layouts/base.html' %}
+{% load extras %}
+
+{% block content %}
+    <header class="full-bleed">
+        {% categories %}
+    </header>
+
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'records:index' %}">Главная</a></li>
+        <li>{{ guide.get_fullname }}</li>
+    </ul>
+
+    <main class="page-profile mt-3">
+        <header style="background-image: url('https://images.unsplash.com/photo-1597423244036-ef5020e83f3c?auto=format&fit=crop&q=80&w=1000');">
+            <div class="img" style="background-image: url({{ guide.image.url }});"></div>
+            <h1>{{ guide.get_fullname }}</h1>
+            <p>{{ guide.email }}</p>
+        </header>
+
+        <h2>Общая информация</h2>
+        <div class="card">
+            <dl>
+                {% if guide.phone %}
+                    <dt>Номер телефона</dt>
+                    <dd>{{ guide.phone }}</dd>
+                {% endif %}
+
+                {% if guide.daily_fee %}
+                    <dt>Стоимость услуг за день (в сумах)</dt>
+                    <dd>{{ guide.daily_fee }}</dd>
+                {% endif %}
+
+                {% if guide.email %}
+                    <dt>Электронная почта</dt>
+                    <dd>{{ guide.email }}</dd>
+                {% endif %}
+
+                {% if guide.telegram %}
+                    <dt>Телеграм</dt>
+                    <dd>{{ guide.telegram }}</dd>
+                {% endif %}
+
+                {% if guide.instagram %}
+                    <dt>Инстаграм</dt>
+                    <dd>{{ guide.instagram }}</dd>
+                {% endif %}
+
+                {% if guide.facebook %}
+                    <dt>Фейсбук</dt>
+                    <dd><a href="{{ guide.facebook }}">{{ guide.facebook }}</a></dd>
+                {% endif %}
+
+                {% if guide.sex %}
+                    <dt>Пол</dt>
+                    <dd>{{ guide.sex }}</dd>
+                {% endif %}
+
+                {% if guide.age %}
+                    <dt>Возраст</dt>
+                    <dd>{{ guide.age }}</dd>
+                {% endif %}
+
+                {% if guide.notes %}
+                    <dt>Дополнительная информация</dt>
+                    <dd>{{ guide.notes }}</dd>
+                {% endif %}
+            </dl>
+
+        </div>
+    </main>
+
+    <footer class="full-bleed">
+        <div class="wrapper">
+            <div class="subscribe">
+                <p>Подпишитесь на рассылку</p>
+                <form action="">
+                    <input type="email" placeholder="Ваш email...">
+                    <input type="submit" value="Подписаться">
+                </form>
+            </div>
+            <ul class="links">
+                <li>
+                    <strong>Our destinations</strong>
+                    <ul>
+                        <li><a href="">Link 1</a></li>
+                        <li><a href="">Link 2</a></li>
+                        <li><a href="">Link 3</a></li>
+                        <li><a href="">Link 4</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Our activities</strong>
+                    <ul>
+                        <li><a href="">Link 1</a></li>
+                        <li><a href="">Link 2</a></li>
+                        <li><a href="">Link 3</a></li>
+                        <li><a href="">Link 4</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <dialog class="modal">
+        <h1>Some title</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates voluptatibus non molestiae incidunt
+            ipsa,
+            nostrum quam eaque ipsum, quibusdam reprehenderit ullam beatae perspiciatis maxime quas.</p>
+        <form method="dialog">
+            <button>&#10005;</button>
+        </form>
+    </dialog>
+    <script>
+        const dialog = document.querySelector("dialog.modal");
+        // dialog.showModal(); // To show modal box
+        // dialog.close(); // To hide modal box
+    </script>
+
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% load extras %}
+
+<nav id="main">
+    <ul class="wrapper horizontal">
+        <li><a href="{% url 'records:index' %}" title="Shahrisabz">Главная</a></li>
+
+        {% for category in categories %}
+            {% if category.visible_on_main %}
+                <li class="">
+                    <p>{{ category }}</p>
+
+                    {% if category.category_set.all %}
+                        <ul>
+                            {% for category in category.category_set.all %}
+                                <li><a href="{% url 'records:index' %}{{ category.slug }}">{{ category.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+
+    </ul>
+</nav>

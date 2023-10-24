@@ -1,0 +1,135 @@
+{% extends 'layouts/base.html' %}
+{% load extras %}
+
+{% block content %}
+    <header class="full-bleed">
+
+        {% categories %}
+
+        <div id="banner">
+            <div class="wrapper">
+                <h1>Добро пожаловать в <strong>Шахрисабз!</strong></h1>
+                <p>Один из древнейших городов Узбекистана с историческим центром, внесенным в объекты Всемирного
+                    наследия ЮНЕСКО.</p>
+            </div>
+        </div>
+        <div class="card wrapper">
+            <h2>Поиск по реестру</h2>
+            <form action="/" method="get">
+                <div class="form-group horizontal">
+                    <input type="text" id="name" class="form-control" placeholder="Отели, гиды, туры ...">
+                    <input type="submit" value="Поиск" class="btn">
+                </div>
+            </form>
+        </div>
+    </header>
+
+    <section class="gallery-list wrapper mt-6">
+        <header class="section-header">
+            <h1>Проживание</h1>
+            <p>Получите актуальную информацию про места для проживания в городе и районе Шахрисабз.</p>
+            <a href="{% url 'records:hotel-list' %}" class="btn btn-primary btn-outline btn-small">Больше</a>
+        </header>
+        <ul class="horizontal mt-2">
+            {% if hotels %}
+                {% for hotel in hotels %}
+                    <li class="card">
+                        <article style="background-image: url('{{ hotel.main_image.url }}')">
+                            <div class="info">
+                                <header>
+                                    <h1><a href="{{ hotel.get_absolute_url }}">{{ hotel.title }}</a></h1>
+                                    <p>{{ hotel.description }}</p>
+                                </header>
+                                <strong>от 700тыс. сум</strong>
+                            </div>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </section>
+
+    <section class="one-to-four wrapper mt-4">
+        <header class="section-header">
+            <h1>Чем можно заняться?</h1>
+            <p>Узнайте чем можно заняться и какие места можно посетить в городе и районе Шахрисабз.</p>
+            <a href="" class="btn btn-primary btn-outline btn-small">Больше</a>
+        </header>
+
+        <div class="items mt-2">
+            {% if poi %}
+                <article>
+                    <header>
+                        <h1>{{ poi.title }}</h1>
+                        {#                    <p>From <strong>$700</strong></p>#}
+                    </header>
+                    <p class="mt-2">{{ poi.description }}</p>
+                    <a href="" class="btn btn-block btn-primary-contrast">Узнать больше</a>
+                </article>
+            {% endif %}
+            <ul>
+                {% for image in poi.poiimage_set.all %}
+                    <li><img src="{{ image.image.url }}" alt="{{ image.caption }}"></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {% if guides %}
+        <section class="guides-list mt-6">
+            <header class="section-header">
+                <h1>Местные гиды</h1>
+                <p>Познакомьтесь с гидами, которые помогут вам ориентироваться в городе и районе Шахрисабз.</p>
+                <a href="" class="btn btn-primary btn-outline btn-small">Больше</a>
+            </header>
+
+            <ul class="mt-2">
+                {% for guide in guides %}
+                    <li class="card guide-card">
+                        {% if guide.image %}
+                            <img src="{{ guide.image.url }}" alt="{{ guide.get_fullname }}">
+                        {% endif %}
+
+                        <a href="{{ guide.get_absolute_url }}"><strong>{{ guide.get_fullname }}</strong></a>
+                        <p>{{ guide.phone }} - {{ guide.email }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+
+    {% if restaurants %}
+        <section class="gallery-list wrapper mt-6">
+            <header class="section-header">
+                <h1>Где поесть?</h1>
+                <p>Получите актуальную информацию о ресторанах и кафе в городе и районе Шахрисабз.</p>
+                <a href="{% url 'records:restaurant-list' %}" class="btn btn-primary btn-outline btn-small">Больше</a>
+            </header>
+            <ul class="horizontal mt-2">
+                {% if restaurants %}
+                    {% for restaurant in restaurants %}
+                        <li class="card">
+                            <article style="background-image: url('{{ restaurant.main_image.url }}')">
+                                <div class="info">
+                                    <header>
+                                        <h1><a href="{{ restaurant.get_absolute_url }}">{{ restaurant.title }}</a></h1>
+                                        <p>{{ restaurant.description }}</p>
+                                    </header>
+{#                                    <strong>от {{ restaurant.average_bill }} сум</strong>#}
+                                </div>
+                            </article>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+        </section>
+    {% endif %}
+
+{% endblock content %}
+
+
+
+
+
+
+

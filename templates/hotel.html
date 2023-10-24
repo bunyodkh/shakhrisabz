@@ -1,0 +1,74 @@
+{% extends 'layouts/base.html' %}
+{% load extras %}
+
+{% block content %}
+    <header class="full-bleed">
+        {% categories %}
+    </header>
+
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'records:index' %}">Главная</a></li>
+        <li><a href="{% url 'records:hotel-list' %}">Все отеstatusли</a></li>
+        <li>{{ hotel.title }}</li>
+    </ul>
+
+    <main class="page-hotels">
+        <header>
+            <h1>{{ hotel.title }}</h1>
+            <address><i class="fa-solid fa-location-dot"></i> {{ hotel.address }}</address>
+            <strong class="price">$240<small>/ночь</small></strong>
+        </header>
+
+        {% if hotel.hotelimage_set.all %}
+            <ul class="gallery mt-2">
+                {% for item in hotel.hotelimage_set.all %}
+                    <li><img src="{{ item.image.url }}" alt="{{ image.caption }}"/></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if hotel.description %}
+            <section>
+                <h3>Описание</h3>
+                <p>{{ hotel.description }}</p>
+            </section>
+        {% endif %}
+
+        {% if hotel.hotelroom_set.all %}
+            <section>
+                <h3>Варианты размещения</h3>
+                <ul class="list">
+                    {% for room in hotel.hotelroom_set.all %}
+                        <li>
+                            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=60&w=800"
+                                 alt="">
+                            <p>{{ room.title }}</p>
+                            <strong>{{ room.price }} сум<small>/ночь</small></strong>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endif %}
+
+        <section class="map">
+            <h3>Местоположение на карте</h3>
+            <div id="map" style="width: 100%; height: 500px"></div>
+        </section>
+    </main>
+
+    <script>
+        let hotelLoc = '{{ hotel.location }}'.split(',')
+
+        let map = L.map('map').setView([hotelLoc[0], hotelLoc[1]], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        let marker = L.marker([
+            hotelLoc[0],
+            hotelLoc[1]
+        ]).addTo(map);
+    </script>
+{% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+{% load extras %}
+
+{% block content %}
+
+    <header class="full-bleed">
+        {% categories %}
+    </header>
+
+
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'records:index' %}">Главная</a></li>
+        <li><p>Туры</p></li>
+    </ul>
+
+    <main class="page-guides">
+        <header>
+            <h1>Доступные туры</h1>
+        </header>
+        <ul class="mt-2">
+            {% for tour in tours %}
+                <li>
+                    <article>
+                        <img src="{{ tour.image.url }}" alt="{{ tour.title }}"/>
+                        <div>
+                            <header>
+                                <h1>{{ tour.title }}</h1>
+                                <p>Стартует от<strong>{{ tour.price }}<small>/чел.</small></strong></p>
+                            </header>
+                            <address><i class="fa-location-dot fa-solid"></i> {{ tour.address }}
+                            </address>
+                            <p>{{ tour.description }}</p>
+                        </div>
+                    </article>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+{% endblock content %}

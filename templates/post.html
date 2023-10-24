@@ -1,0 +1,24 @@
+{% extends 'layouts/base.html' %}
+{% load extras %}
+
+{% block content %}
+
+    <header class="full-bleed">
+        {% categories %}
+    </header>
+
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'records:index' %}">Главная</a></li>
+        <li><a href="{% url 'records:post-list' %}">Все публикации</a></li>
+    <li><p>{{ post.title }}</p></li>
+    </ul>
+
+    <main class="page-news">
+        <article class="card">
+            <h1>{{ post.title }}</h1>
+            <time>{{ post.date }}</time> <span>{{ post.posttype_verbose }}</span>
+            <p>{{ post.description }}</p>
+        </article>
+    </main>
+
+{% endblock content %}

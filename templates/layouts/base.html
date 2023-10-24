@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'includes/head.html' %}
+
+    <body>
+        {% block content %} {% endblock %}
+
+        {% include 'includes/footer.html' %}
+
+        <script defer>
+            let form = document.getElementById('subscription-form')
+
+
+            form.addEventListener('submit', event => {
+                event.preventDefault()
+
+                let email = document.getElementById('email-for-subscription')
+
+                if (email.value.trim().length > 0) { // fix this shit - add proper validation
+                    postJSON({email: email.value})
+                }
+                // do something if email is not valid
+            })
+
+
+            async function postJSON(data) {
+                try {
+                    const response = await fetch("subscribe/", {
+                        method: "POST", // or 'PUT'
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-CSRFToken": '{{ csrf_token }}'
+                        },
+                        body: JSON.stringify(data),
+                    });
+
+                    const result = await response.json();
+
+                    console.log("Success:", result);
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            }
+        </script>
+    </body>
+</html>
