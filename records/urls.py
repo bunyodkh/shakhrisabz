@@ -6,7 +6,7 @@ from .views import (
     index,
     get_hotels, get_hotel,
     get_restaurants, get_restaurant,
-    get_pois,
+    get_pois, get_poi,
     get_guide,
     get_tours,
     get_organizations, get_organization,
@@ -33,6 +33,7 @@ urlpatterns = [
     path('posts/<int:pk>', get_post, name='post-detail'),
 
     path('point-of-interests/', get_pois, name='poi-list'),
+    path('point-of-interests/<int:pk>', get_poi, name='poi-detail'),
 
     path('subscribe/', subscribe, name='subscribe')
 ]

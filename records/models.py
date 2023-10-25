@@ -237,6 +237,12 @@ class POI(models.Model):  # points of interest
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self, **kwargs):
+        return reverse('records:poi-detail', kwargs={'pk': self.id})
+
+    def poitype_verbose(self):
+        return dict(POI.TYPE_CHOICES)[self.poi_type]
+
     class Meta:
         ordering = ['-created']
         verbose_name = 'Точка интереса'
@@ -249,8 +255,8 @@ class POIImage(models.Model):
     case_attached = models.ForeignKey('POI', null=True, blank=True, on_delete=models.CASCADE)
     caption = models.CharField(max_length=200, null=True, blank=True)
 
-    created = models.DateField()
-    updated = models.DateField()
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
 
     class Meta:
         ordering = ['caption']
@@ -368,8 +374,8 @@ class Category(models.Model):
     parent_category = models.ForeignKey('self', on_delete=models.DO_NOTHING, blank=True, null=True)
     visible_on_main = models.BooleanField('Показывать в главной навигации', default=False)
 
-    created = models.DateField()
-    updated = models.DateField()
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.title

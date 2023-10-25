@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html' %}
+{% load extras %}
+
+{% block content %}
+
+    <header class="full-bleed">
+        {% categories %}
+    </header>
+
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'records:index' %}">Главная</a></li>
+        <li><p>Все точки интереса</p></li>
+    </ul>
+
+    <section class="one-to-four wrapper mt-4">
+        <div class="items mt-2">
+            {% if poi %}
+                <article>
+                    <header>
+                        <h1>{{ poi.title }}</h1>
+                        <p><strong>{{ poi.poitype_verbose }}</strong></p>
+                    </header>
+                    <p class="mt-2">{{ poi.description|truncatewords:20 }}</p>
+                    <a href="" class="btn btn-block btn-primary-contrast">Узнать больше</a>
+                </article>
+            {% endif %}
+            <ul>
+                {% for image in poi.poiimage_set.all %}
+                    <li><img src="{{ image.image.url }}" alt="{{ image.caption }}"></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+    </section>
+
+{% endblock content %}

@@ -43,7 +43,13 @@ def get_restaurant(request, *args, **kwargs):
 
 def get_pois(request):
     context = {'pois': POI.objects.all()}
-    return render(request, 'index.html', context)
+    return render(request, 'pois.html', context)
+
+
+def get_poi(request, *args, **kwargs):
+    poi_id = kwargs['pk']
+    context = {'poi': POI.objects.get(id=poi_id)}
+    return render(request, 'poi.html', context)
 
 
 def get_guide(request, *args, **kwargs):

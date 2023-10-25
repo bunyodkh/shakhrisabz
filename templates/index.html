@@ -53,7 +53,7 @@
         <header class="section-header">
             <h1>Чем можно заняться?</h1>
             <p>Узнайте чем можно заняться и какие места можно посетить в городе и районе Шахрисабз.</p>
-            <a href="" class="btn btn-primary btn-outline btn-small">Больше</a>
+            <a href="{% url "records:poi-list" %}" class="btn btn-primary btn-outline btn-small">Больше</a>
         </header>
 
         <div class="items mt-2">
@@ -61,17 +61,20 @@
                 <article>
                     <header>
                         <h1>{{ poi.title }}</h1>
-                        {#                    <p>From <strong>$700</strong></p>#}
+                        <p><strong>{{ poi.poitype_verbose }}</strong></p>
                     </header>
-                    <p class="mt-2">{{ poi.description }}</p>
-                    <a href="" class="btn btn-block btn-primary-contrast">Узнать больше</a>
+                    <p class="mt-2">{{ poi.description|truncatewords:20 }}</p>
+                    <a href="{{ poi.get_absolute_url }}" class="btn btn-block btn-primary-contrast">Узнать больше</a>
                 </article>
             {% endif %}
-            <ul>
-                {% for image in poi.poiimage_set.all %}
-                    <li><img src="{{ image.image.url }}" alt="{{ image.caption }}"></li>
-                {% endfor %}
-            </ul>
+
+            {% if poi.poiimage_set.all %}
+                <ul>
+                    {% for image in poi.poiimage_set.all %}
+                        <li><img src="{{ image.image.url }}" alt="{{ image.caption }}"></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
         </div>
     </section>
 
@@ -115,7 +118,7 @@
                                         <h1><a href="{{ restaurant.get_absolute_url }}">{{ restaurant.title }}</a></h1>
                                         <p>{{ restaurant.description }}</p>
                                     </header>
-{#                                    <strong>от {{ restaurant.average_bill }} сум</strong>#}
+                                    {#                                    <strong>от {{ restaurant.average_bill }} сум</strong>#}
                                 </div>
                             </article>
                         </li>
