@@ -141,6 +141,12 @@ class Hotel(models.Model):
     def get_absolute_url(self, **kwargs):
         return reverse('records:hotel-detail', kwargs={'pk': self.id})
 
+    def get_lowest_price(self):
+        prices = []
+        for room in self.hotelroom_set.all():
+            prices.append(room.price)
+        return min(prices)
+
 
 class HotelRoom(models.Model):
     title = models.CharField('Название комнаты', max_length=200, null=False, blank=False)
