@@ -10,7 +10,7 @@ def path_and_rename(path):
         else:
             filename = '{}.{}'.format(uuid4().hex, ext)
         return os.path.join(path, filename)
-    return wrapper
+        return wrapper
 
 
 def email_valid(email):

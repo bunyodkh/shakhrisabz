@@ -13,7 +13,9 @@
 
     <main class="page-profile mt-3">
         <header style="background-image: url('https://images.unsplash.com/photo-1597423244036-ef5020e83f3c?auto=format&fit=crop&q=80&w=1000');">
-            <div class="img" style="background-image: url({{ guide.image.url }});"></div>
+            {% if guide.image %}
+                <div class="img" style="background-image: url({{ guide.image.url }});"></div>
+            {% endif %}
             <h1>{{ guide.get_fullname }}</h1>
             <p>{{ guide.email }}</p>
         </header>

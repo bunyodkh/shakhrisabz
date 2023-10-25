@@ -56,7 +56,7 @@ class HotelImageInline(admin.TabularInline):
 class HotelRoomInline(admin.TabularInline):
     model = HotelRoom
     extra = 0
-    fields = ['title', 'price']
+    fields = ['title', 'price', 'image']
 
 
 class HotelAdmin(admin.ModelAdmin):

@@ -42,7 +42,6 @@ class Guide(models.Model):
         verbose_name_plural = 'Гиды'
 
 
-
 class Restaurant(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     main_image = models.ImageField(upload_to=path_and_rename('uploads/restaurants'), null=True, blank=True)
@@ -79,6 +78,7 @@ class Meal(models.Model):
     title = models.CharField('Название пункта меню', max_length=200, null=False, blank=False)
     price = models.PositiveIntegerField('Цена одной единицы')
     restaurant_attached = models.ForeignKey('Restaurant', null=True, blank=True, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=path_and_rename('uploads/meals'), null=True, blank=True)
 
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
@@ -146,6 +146,7 @@ class HotelRoom(models.Model):
     title = models.CharField('Название комнаты', max_length=200, null=False, blank=False)
     price = models.PositiveIntegerField('Цена комнаты')
     hotel_attached = models.ForeignKey('Hotel', null=True, blank=True, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=path_and_rename('uploads/rooms'), null=True, blank=True)
 
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
@@ -208,7 +209,6 @@ class Post(models.Model):
 
     def posttype_verbose(self):
         return dict(Post.TYPE_CHOICES)[self.post_type]
-
 
 
 class POI(models.Model):  # points of interest
@@ -496,7 +496,7 @@ class ImageGalleryImage(models.Model):
 class Tour(models.Model):
     title = models.CharField('Название', max_length=600, null=False, blank=False)
     description = models.TextField('Описание', max_length=1000, null=False, blank=False)
-    image = models.ImageField(upload_to=path_and_rename('uploads/tours'), null=True, blank=True)
+    image = models.ImageField(upload_to=path_and_rename('uploads/tours'), null=False, blank=False)
     price = models.CharField('Цена', max_length=50, null=False, blank=False)
     address = models.CharField('Адрес', max_length=200, null=False, blank=False)
 
