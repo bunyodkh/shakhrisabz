@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %}
+{% load extras %}
+
+{% block content %}
+
+    <header class="full-bleed">
+        {% categories %}
+    </header>
+
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'records:index' %}">Главная</a></li>
+        <li><p>Результаты поиска для запроса "{{ query }}"</p></li>
+    </ul>
+
+    <main class="page-news">
+        <h1>Результаты поиска для запроса "{{ query }}"</h1>
+        <ul class="card">
+            {% if guides %}
+                {% for guide in guides %}
+                    <li>
+                        <article>
+                            <h3><a href="{{ guide.get_absolute_url }}">{{ guide.get_fullname }}</a></h3>
+                            <p><a href="{% url "records:index" %}">Гиды</a></p>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+
+             {% if hotels %}
+                {% for hotel in hotels %}
+                    <li>
+                        <article>
+                            <h3><a href="{{ hotel.get_absolute_url }}">{{ hotel.title }}</a></h3>
+                            <p><a href="{% url "records:hotel-list" %}">Отели</a></p>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </main>
+
+{% endblock content %}

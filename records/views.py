@@ -1,11 +1,24 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.db.models import Q
+from itertools import chain
 import json
 
-from .models import Category, Hotel, POI, Guide, Restaurant, Tour, Organization, Post
-from helpers.utils import email_valid
+from .models import (
+    Category,
+    Hotel,
+    POI,
+    Guide,
+    Restaurant,
+    Tour,
+    Organization,
+    Post,
+    Event,
+    Transport,
+    Subscription
 
-from .models import Subscription
+)
+from helpers.utils import email_valid
 
 
 def index(request):
@@ -84,6 +97,7 @@ def get_post(request, *args, **kwargs):
     context = {'post': Post.objects.get(pk=post_id)}
     return render(request, 'post.html', context)
 
+
 def subscribe(request):
     if request.method == 'POST':
         data = json.loads(request.body)
@@ -95,3 +109,40 @@ def subscribe(request):
             else:
                 return JsonResponse({'message': 'Duplicate found'})
     return redirect('/')
+
+
+
+
+def search(request):
+    query = None
+    hotels = restaurants = organizations = guides = posts = pois = transports = events = tours = None
+    results = None
+    if request.method == 'GET':
+        query = request.GET.get('query')
+        print(query)
+        try:
+            hotels = Hotel.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+            restaurants = Restaurant.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+            organizations = Organization.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+            guides = Guide.objects.filter(Q(first_name__contains=query) | Q(last_name__contains=query))
+            posts = Post.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+            pois = POI.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+            transports = Transport.objects.filter(Q(model__contains=query) | Q(driver__contains=query))
+            events = Event.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+            tours = Tour.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+        except:
+            hotels = None
+            restaurants = None
+            organizations = None
+            guides = None
+            posts = None
+            pois = None
+            transports = None
+            events = None
+            tours = None
+
+    return render(request, 'search.html', {
+        'hotels': hotels,
+        'query': query,
+        'guides': guides
+    })

@@ -15,9 +15,9 @@
         </div>
         <div class="card wrapper">
             <h2>Поиск по реестру</h2>
-            <form action="/" method="get">
+            <form action="{% url 'records:search' %}" method="GET">
                 <div class="form-group horizontal">
-                    <input type="text" id="name" class="form-control" placeholder="Отели, гиды, туры ...">
+                    <input type="text" id="name" class="form-control" placeholder="Отели, гиды, туры ..." name="query">
                     <input type="submit" value="Поиск" class="btn">
                 </div>
             </form>
@@ -42,22 +42,7 @@
                                 </header>
 
                                 {% if hotel.hotelroom_set.all %}
-                                    <strong>{{ hotel.get_lowest_price }}</strong>
-                                {% endif %}
-                            </div>
-                        </article>
-                    </li>
-
-                    <li class="card">
-                        <article style="background-image: url('{{ hotel.main_image.url }}')">
-                            <div class="info">
-                                <header>
-                                    <h1><a href="{{ hotel.get_absolute_url }}">{{ hotel.title }}</a></h1>
-                                    <p>{{ hotel.description|truncatewords:15 }}</p>
-                                </header>
-
-                                {% if hotel.hotelroom_set.all %}
-                                    <strong>{{ hotel.get_lowest_price }}</strong>
+                                    <strong>от {{ hotel.get_lowest_price }} сум</strong>
                                 {% endif %}
                             </div>
                         </article>
