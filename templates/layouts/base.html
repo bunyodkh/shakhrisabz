@@ -3,10 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
     {% include 'includes/head.html' %}
-
     <body>
         {% block content %} {% endblock %}
-
         {% include 'includes/footer.html' %}
 
         <script defer>
@@ -33,16 +31,51 @@
                             "Content-Type": "application/json",
                             "X-CSRFToken": '{{ csrf_token }}'
                         },
-                        body: JSON.stringify(data),
+                        body: JSON.stringify(data)
                     });
 
-                    const result = await response.json();
+                    const result = await response.json()
 
-                    console.log("Success:", result);
+                    console.log(result)
+
+                    if (result.message === 'Subscribed') {
+                        const dialog = document.getElementById("modalsuccess")
+                        dialog.showModal()
+                    }
+
+                    if (result.message === 'Duplicate found') {
+                        const dialog = document.getElementById("modalduplicate")
+                        dialog.showModal()
+                    }
                 } catch (error) {
-                    console.error("Error:", error);
+                    const dialog = document.getElementById("modalerror")
+                    dialog.showModal()
                 }
             }
         </script>
+
+        <dialog id="modalsuccess" class="modal">
+            <h1>Спасибо за подписку!</h1>
+            <p>Теперь вы сможете получать актуальную информацию об обновлениях данного ресурса.</p>
+            <form method="dialog">
+                <button>&#10005;</button>
+            </form>
+        </dialog>
+
+        <dialog id="modalduplicate" class="modal">
+            <h1>Данная электронная почта уже подписана на обновления!</h1>
+            <form method="dialog">
+                <button>&#10005;</button>
+            </form>
+        </dialog>
+
+        <dialog id="modalerror" class="modal">
+            <h1>Что-то пошло не так!</h1>
+            <p>Попробуйте снова. В этот раз попробуйте стандартный формат электронной почты (напр. test@test.uz)</p>
+            <form method="dialog">
+                <button>&#10005;</button>
+            </form>
+        </dialog>
+
     </body>
 </html>

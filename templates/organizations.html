@@ -10,7 +10,7 @@
 
     <ul class="breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
-        <li><p>Организации</p></li>
+        <li><p>Все организации</p></li>
     </ul>
 
     <main class="page-guides">
@@ -22,7 +22,6 @@
                 <li>
                     <article>
                         {% for image in organization.organizationimage_set.all %}
-                            {{ image.url }}
                         	{% if image.main %}
                         		<img src="{{ image.image.url }}" alt="{{ image.caption }}"/>
                         	{% endif %}

@@ -13,7 +13,7 @@ class Guide(models.Model):
     SEX_CHOICES = (('Male', 'Мужчина'), ('Female', 'Женщина'))
     sex = models.CharField('Пол', max_length=20, choices=SEX_CHOICES, blank=True, null=True, default='Male')
     age = models.PositiveIntegerField('Возраст', null=True, blank=True)
-    image = models.ImageField('Фотография', upload_to=path_and_rename('guides/images'), blank=True, null=True)
+    image = models.ImageField('Фотография', upload_to=path_and_rename('uploads/guides'), blank=True, null=True)
 
     daily_fee = models.PositiveIntegerField('Стоимость услуг за день (в сумах)', null=True, blank=True)
     email = models.CharField('Электронная почта', max_length=100, null=True, blank=True)
@@ -45,7 +45,7 @@ class Guide(models.Model):
 
 class Restaurant(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
-    main_image = models.ImageField(upload_to=path_and_rename('restaurants/image'), null=True, blank=True)
+    main_image = models.ImageField(upload_to=path_and_rename('uploads/restaurants'), null=True, blank=True)
     description = models.TextField('Краткое описание', max_length=1000, null=True, blank=True)
 
     address = models.CharField('Адрес', max_length=500, null=True, blank=True)
@@ -93,7 +93,7 @@ class Meal(models.Model):
 
 
 class RestaurantImage(models.Model):
-    image = models.ImageField(upload_to=path_and_rename('records/image'), null=True, blank=True)
+    image = models.ImageField(upload_to=path_and_rename('uploads/restaurants'), null=True, blank=True)
     # TODO: main image is duplicated in model and here - fix it later
     restaurant_attached = models.ForeignKey('Restaurant', null=True, blank=True, on_delete=models.CASCADE)
     caption = models.CharField('Описание к изображнию', max_length=200, null=True, blank=True)
@@ -114,7 +114,7 @@ class Hotel(models.Model):
     title = models.CharField('Название', max_length=100, null=False, blank=False)
     description = models.TextField('Описание', max_length=1000, null=True, blank=True)
     address = models.TextField('Адрес', max_length=1000, null=True, blank=True)
-    main_image = models.ImageField(upload_to=path_and_rename('records/hotels/image'), null=True, blank=True)
+    main_image = models.ImageField(upload_to=path_and_rename('uploads/hotels'), null=True, blank=True)
 
     notes = models.TextField('Дополнительная информация', null=True, blank=True)
 
@@ -160,7 +160,7 @@ class HotelRoom(models.Model):
 
 
 class HotelImage(models.Model):
-    image = models.ImageField(upload_to=path_and_rename('records/image'), null=True, blank=True)
+    image = models.ImageField(upload_to=path_and_rename('uploads/hotels'), null=True, blank=True)
     # TODO: main image is duplicated in model and here - fix it later
     main = models.BooleanField('Главное изображение', default=False)
     hotel_attached = models.ForeignKey('Hotel', null=True, blank=True, on_delete=models.CASCADE)
@@ -181,7 +181,7 @@ class HotelImage(models.Model):
 class Post(models.Model):
     title = models.CharField('Заголовок', max_length=100, null=False, blank=False)
     description = models.TextField('Текст поста', null=True, blank=True)
-    image = models.ImageField('Изображение', upload_to=path_and_rename('posts/image'), null=True, blank=True)
+    image = models.ImageField('Изображение', upload_to=path_and_rename('uploads/posts'), null=True, blank=True)
     author = models.CharField('Автор', max_length=100, null=True, blank=True)
 
     date = models.DateField('Дата публикации')
@@ -244,7 +244,7 @@ class POI(models.Model):  # points of interest
 
 
 class POIImage(models.Model):
-    image = models.ImageField(upload_to=path_and_rename('records/image'), null=True, blank=True)
+    image = models.ImageField(upload_to=path_and_rename('uploads/pois'), null=True, blank=True)
     main = models.BooleanField('Главное изображение', default=False)
     case_attached = models.ForeignKey('POI', null=True, blank=True, on_delete=models.CASCADE)
     caption = models.CharField(max_length=200, null=True, blank=True)
@@ -264,11 +264,11 @@ class POIImage(models.Model):
 class Transport(models.Model):
     model = models.CharField('Модель транспорта', max_length=100, null=True, blank=True)
     type = models.CharField('Тип транспорта', max_length=100, null=True, blank=True)
-    transport_image = models.ImageField(upload_to=path_and_rename('records/transport'), null=True, blank=True)
+    transport_image = models.ImageField(upload_to=path_and_rename('uploads/transports'), null=True, blank=True)
 
     driver = models.CharField('Имя водителя', max_length=200, null=True, blank=True)
     phone = models.CharField('Номер телефона', max_length=50, null=True, blank=True)
-    driver_image = models.ImageField(upload_to=path_and_rename('records/transport'), null=True, blank=True)
+    driver_image = models.ImageField(upload_to=path_and_rename('uploads/drivers'), null=True, blank=True)
 
     notes = models.TextField('Дополнительная информация', max_length=500, null=True, blank=True)
 
@@ -330,7 +330,7 @@ class Organization(models.Model):
 
 
 class OrganizationImage(models.Model):
-    image = models.ImageField(upload_to=path_and_rename('records/organizations/image'), null=True, blank=True)
+    image = models.ImageField(upload_to=path_and_rename('uploads/organizations'), null=True, blank=True)
     main = models.BooleanField('Главное изображение', default=False)
     case_attached = models.ForeignKey('Organization', null=True, blank=True, on_delete=models.DO_NOTHING)
     caption = models.CharField(max_length=200, null=True, blank=True)
@@ -410,7 +410,7 @@ class Event(models.Model):
 
 
 class EventImage(models.Model):
-    image = models.ImageField(upload_to=path_and_rename('records/events/image'), null=True, blank=True)
+    image = models.ImageField(upload_to=path_and_rename('uploads/events'), null=True, blank=True)
     main = models.BooleanField('Главное изображение', default=False)
     case_attached = models.ForeignKey('Event', null=True, blank=True, on_delete=models.CASCADE)
     caption = models.CharField(max_length=200, null=True, blank=True, default='Изображение')
@@ -474,7 +474,7 @@ class ImageGallery(models.Model):
 
 
 class ImageGalleryImage(models.Model):
-    image = models.ImageField(upload_to=path_and_rename('records/gallery/image'), null=True, blank=True)
+    image = models.ImageField(upload_to=path_and_rename('uploads/gallery'), null=True, blank=True)
     title = models.CharField(max_length=100, null=False, blank=False)
     caption = models.CharField(max_length=200, null=True, blank=True, default='Изображение')
 
@@ -496,7 +496,7 @@ class ImageGalleryImage(models.Model):
 class Tour(models.Model):
     title = models.CharField('Название', max_length=600, null=False, blank=False)
     description = models.TextField('Описание', max_length=1000, null=False, blank=False)
-    image = models.ImageField(upload_to=path_and_rename('records/tours/image'), null=True, blank=True)
+    image = models.ImageField(upload_to=path_and_rename('uploads/tours'), null=True, blank=True)
     price = models.CharField('Цена', max_length=50, null=False, blank=False)
     address = models.CharField('Адрес', max_length=200, null=False, blank=False)
 
