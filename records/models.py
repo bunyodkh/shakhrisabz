@@ -231,8 +231,8 @@ class POI(models.Model):  # points of interest
     city = models.CharField('Город', max_length=255, null=True, blank=True, default='Shahrisabz')
     location = PlainLocationField(based_fields=['city'], default='39.060366, 66.845915', zoom=7)
 
-    created = models.DateField()
-    updated = models.DateField()
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.title
