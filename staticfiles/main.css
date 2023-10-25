@@ -738,6 +738,10 @@ footer input[type="submit"] {
     border-top: 1px solid rgba(17, 34, 17, .25);
 }
 
+.section-description {
+    border-top: none !important;
+}
+
 .page-hotels section h3 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
