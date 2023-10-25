@@ -735,11 +735,7 @@ footer input[type="submit"] {
 
 .page-hotels section {
     padding: 4rem 0;
-    border-top: 1px solid rgba(17, 34, 17, .25);
-}
-
-.section-description {
-    border-top: none !important;
+    /*border-top: 1px solid rgba(17, 34, 17, .25);*/
 }
 
 .page-hotels section h3 {
@@ -769,9 +765,9 @@ footer input[type="submit"] {
     flex-grow: 1;
 }
 
-.list li:last-child {
-    border: none;
-}
+/*.list li:last-child {*/
+/*    border: none;*/
+/*}*/
 
 .list li img {
     width: 48px;
