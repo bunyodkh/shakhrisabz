@@ -8,7 +8,7 @@ DEBUG = False
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
-ALLOWED_HOSTS = ['138.197.190.63']
+ALLOWED_HOSTS = ['138.197.190.63', 'www.shakhrisabz-travel.uz', 'shakhrisabz-travel.uz']
 
 INSTALLED_APPS = [
     'jazzmin',
