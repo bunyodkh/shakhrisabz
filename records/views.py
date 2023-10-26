@@ -19,7 +19,6 @@ from .models import (
 
 from helpers.utils import email_valid
 
-
 def index(request):
     context = {
         'categories': Category.objects.all(),
@@ -75,6 +74,12 @@ def get_tours(request):
     return render(request, 'tours.html', context)
 
 
+def get_tour(request, *args, **kwargs):
+    tour_id = kwargs['pk']
+    context = {'tour': Tour.objects.get(id=tour_id)}
+    return render(request, 'tour.html', context)
+
+
 def get_organizations(request):
     context = {'organizations': Organization.objects.all()}
     return render(request, 'organizations.html', context)
@@ -117,14 +122,15 @@ def search(request):
         query = request.GET.get('query')
         print(query)
         try:
-            hotels = Hotel.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
-            restaurants = Restaurant.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
+            hotels = Hotel.objects.filter(Q(title__contains=query) | Q(description__contains=query))  # included
+            restaurants = Restaurant.objects.filter(
+                Q(title__contains=query) | Q(description__contains=query))  # included
             organizations = Organization.objects.filter(Q(title__contains=query) | Q(description__contains=query))
-            guides = Guide.objects.filter(Q(first_name__contains=query) | Q(last_name__contains=query)) # included
-            posts = Post.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
-            pois = POI.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
-            transports = Transport.objects.filter(Q(model__contains=query) | Q(driver__contains=query)) # included
-            events = Event.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
+            guides = Guide.objects.filter(Q(first_name__contains=query) | Q(last_name__contains=query))  # included
+            posts = Post.objects.filter(Q(title__contains=query) | Q(description__contains=query))  # included
+            pois = POI.objects.filter(Q(title__contains=query) | Q(description__contains=query))  # included
+            transports = Transport.objects.filter(Q(model__contains=query) | Q(driver__contains=query))  # included
+            events = Event.objects.filter(Q(title__contains=query) | Q(description__contains=query))  # included
             tours = Tour.objects.filter(Q(title__contains=query) | Q(description__contains=query))
         except:
             hotels = None

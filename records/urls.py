@@ -8,7 +8,7 @@ from .views import (
     get_restaurants, get_restaurant,
     get_pois, get_poi,
     get_guide,
-    get_tours,
+    get_tours, get_tour,
     get_organizations, get_organization,
     get_posts, get_post,
     subscribe,
@@ -25,7 +25,9 @@ urlpatterns = [
     path('restaurants/<int:pk>', get_restaurant, name='restaurant-detail'),
 
     path('guides/<int:pk>', get_guide, name='guide-detail'),
+
     path('tours/', get_tours, name='tour-list'),
+    path('tours/<int:pk>', get_tour, name='tour-detail'),
 
     path('organizations/', get_organizations, name='organization-list'),
     path('organization/<int:pk>', get_organization, name='organization-detail'),

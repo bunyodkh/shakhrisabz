@@ -10,12 +10,13 @@
 
     <ul class="breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
-        <li><p>Туры</p></li>
+        <li><a href="{% url 'records:tour-list' %}">Все туры</a></li>
+        <li><p>{{ tour.title }}</p></li>
     </ul>
 
     <main class="page-guides">
         <header>
-            <h1>Доступные туры</h1>
+            <h1>{{ tour.title }}</h1>
         </header>
         <ul class="mt-2">
             {% for tour in tours %}
@@ -24,18 +25,12 @@
                         <img src="{{ tour.image.url }}" alt="{{ tour.title }}"/>
                         <div>
                             <header>
-                                <h1><a href="{{ tour.get_absolute_url }}">{{ tour.title }}</a></h1>
+                                <h1>{{ tour.title }}</h1>
                                 <p>Стартует от<strong>{{ tour.price }}<small>/чел.</small></strong></p>
                             </header>
                             <address><i class="fa-location-dot fa-solid"></i> {{ tour.address }}
                             </address>
-                            <p>{{ tour.description|truncatewords:30 }}</p>
-                            {% if tour.company %}
-                            	<p>Организатор: {{ tour.company }}</p>
-                            {% endif %}
-                            {% if tour.guide %}
-                            	<p>Гид: {{ tour.guide }}</p>
-                            {% endif %}
+                            <p>{{ tour.description }}</p>
                         </div>
                     </article>
                 </li>

@@ -16,7 +16,9 @@
         <header>
             <h1>{{ restaurant.title }}</h1>
             <address><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</address>
-            <strong class="price">{{ restaurant.average_bill }} - <small>средний чек</small></strong>
+            {% if restaurant.average_bill > 0 %}
+            	<strong class="price">{{ restaurant.average_bill }} сум <small>/ средний счет</small></strong>
+            {% endif %}
         </header>
 
         {% if restaurant.restaurantimage_set.all %}
@@ -40,8 +42,7 @@
                 <ul class="list">
                     {% for meal in restaurant.meal_set.all %}
                         <li>
-                            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=60&w=800"
-                                 alt="">
+                            <img class="meal-image" src="{{ meal.image.url }}" alt="{{ meal.title }}">
                             <p>{{ meal.title }}</p>
                             <strong>{{ meal.price }} сум</strong>
                         </li>
@@ -55,6 +56,8 @@
             <div id="map" style="width: 100%; height: 500px"></div>
         </section>
     </main>
+
+    <dialog id="img-modal" class="modal"></dialog>
 
     <script>
         let restaurantLoc = '{{ restaurant.location }}'.split(',')
@@ -70,5 +73,21 @@
             restaurantLoc[0],
             restaurantLoc[1]
         ]).addTo(map);
+    </script>
+
+    <script defer>
+        let mealImages = document.querySelectorAll('.meal-image')
+
+        mealImages.forEach(img => {
+            img.addEventListener('click', e => {
+                let dialog = document.getElementById('img-modal')
+
+                dialog.innerHTML = `<img src="${img.src}" alt="${img.alt}">
+                                    <form method="dialog">
+                                        <button>&#10005;</button>
+                                    </form>`
+                dialog.showModal()
+            })
+        })
     </script>
 {% endblock content %}

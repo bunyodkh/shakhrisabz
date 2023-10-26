@@ -46,6 +46,7 @@ class Restaurant(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
     main_image = models.ImageField(upload_to=path_and_rename('uploads/restaurants'), null=True, blank=True)
     description = models.TextField('Краткое описание', max_length=1000, null=True, blank=True)
+    average_bill = models.PositiveIntegerField('Средний счет на 1 человека', default=0)
 
     address = models.CharField('Адрес', max_length=500, null=True, blank=True)
     phone = models.CharField(max_length=100, null=True, blank=True)
@@ -53,8 +54,6 @@ class Restaurant(models.Model):
     facebook = models.CharField(max_length=100, null=True, blank=True)
     instagram = models.CharField(max_length=100, null=True, blank=True)
     telegram = models.CharField(max_length=100, null=True, blank=True)
-
-    average_bill = models.CharField(max_length=100, null=True, blank=True)
 
     city = models.CharField(max_length=255, null=True, blank=True, default='Shahrisabz')
     location = PlainLocationField(based_fields=['city'], default='39.060366, 66.845915', zoom=7)
@@ -529,3 +528,6 @@ class Tour(models.Model):
 
     def __str__(self) -> str:
         return f'{self.title}'
+
+    def get_absolute_url(self, **kwargs):
+        return reverse('records:tour-detail', kwargs={'pk': self.id})

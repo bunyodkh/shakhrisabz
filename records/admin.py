@@ -252,7 +252,7 @@ class RestaurantImageInline(admin.TabularInline):
 class MealInline(admin.TabularInline):
     model = Meal
     extra = 0
-    fields = ['title', 'price']
+    fields = ['title', 'price', 'image']
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -271,6 +271,7 @@ class RestaurantAdmin(admin.ModelAdmin):
                 'main_image',
                 'city',
                 'location',
+                'average_bill',
             )
         }),
         ('Контактные данные', {
