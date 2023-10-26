@@ -19,6 +19,7 @@ from .models import (
 
 from helpers.utils import email_valid
 
+
 def index(request):
     context = {
         'categories': Category.objects.all(),
@@ -100,6 +101,17 @@ def get_post(request, *args, **kwargs):
     post_id = kwargs['pk']
     context = {'post': Post.objects.get(pk=post_id)}
     return render(request, 'post.html', context)
+
+
+def get_transports(request):
+    context = {'transports': Transport.objects.all()}
+    return render(request, 'transports.html', context)
+
+
+def get_transport(request, *args, **kwargs):
+    transport_id = kwargs['pk']
+    context = {'transport': Transport.objects.get(pk=transport_id)}
+    return render(request, 'transport.html', context)
 
 
 def subscribe(request):

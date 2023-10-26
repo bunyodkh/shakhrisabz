@@ -11,6 +11,7 @@ from .views import (
     get_tours, get_tour,
     get_organizations, get_organization,
     get_posts, get_post,
+    get_transports, get_transport,
     subscribe,
     search
 )
@@ -37,6 +38,9 @@ urlpatterns = [
 
     path('point-of-interests/', get_pois, name='poi-list'),
     path('point-of-interests/<int:pk>', get_poi, name='poi-detail'),
+
+    path('transports/', get_transports, name='transport-list'),
+    path('transports/<int:pk>', get_transport, name='transport-detail'),
 
     path('subscribe/', subscribe, name='subscribe'),
     path('search/', search, name='search')

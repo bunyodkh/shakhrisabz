@@ -295,6 +295,12 @@ class Transport(models.Model):
         verbose_name = 'Транспортное средство'
         verbose_name_plural = 'Транспортные средства'
 
+    def get_absolute_url(self, **kwargs):
+        return reverse('records:transport-detail', kwargs={'pk': self.id})
+
+    # def poitype_verbose(self):
+    #     return dict(POI.TYPE_CHOICES)[self.poi_type]
+
 
 class Organization(models.Model):
     title = models.CharField('Название', max_length=100, null=False, blank=False)

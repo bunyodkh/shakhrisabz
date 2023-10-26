@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+{% load extras %}
+
+{% block content %}
+
+    <header class="full-bleed">
+        {% categories %}
+    </header>
+
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'records:index' %}">Главная</a></li>
+        <li><p>Все доступные виды транспорта</p></li>
+    </ul>
+
+    <section class="gallery-list wrapper mt-0">
+        <header class="section-header">
+            <h1>Информация о траспортных средствах и водителях</h1>
+        </header>
+        <ul class="horizontal mt-2">
+            {% if transports %}
+                {% for transport in transports %}
+                    <li class="card">
+                        <article style="background-image: url({{ transport.transport_image.url }})">
+                            <div class="info">
+                                <header>
+                                    <h1><a href="{{ transport.get_absolute_url }}">{{ transport.model }}</a></h1>
+                                    <p>Водитель: {{ transport.driver }}</p>
+                                    <p>Телефон: {{ transport.phone }}</p>
+                                </header>
+                            </div>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    </section>
+
+{% endblock content %}
