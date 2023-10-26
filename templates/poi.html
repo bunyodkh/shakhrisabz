@@ -9,7 +9,8 @@
 
     <ul class="breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
-        <li><p>Все точки интереса</p></li>
+        <li><a href="{% url 'records:poi-list' %}">Все точки интереса</a></li>
+        <li><p>{{ poi.title}}</p></li>
     </ul>
 
     <section class="one-to-four wrapper mt-4">
