@@ -26,12 +26,79 @@
                 {% endfor %}
             {% endif %}
 
-             {% if hotels %}
+            {% if hotels %}
                 {% for hotel in hotels %}
                     <li>
                         <article>
                             <h3><a href="{{ hotel.get_absolute_url }}">{{ hotel.title }}</a></h3>
                             <p><a href="{% url "records:hotel-list" %}">Отели</a></p>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+
+            {% if organizations %}
+                {% for organization in organizations %}
+                    <li>
+                        <article>
+                            <h3><a href="{{ organization.get_absolute_url }}">{{ organization.title }}</a></h3>
+                            <p><a href="{% url "records:organization-list" %}">Организации</a></p>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+
+            {% if pois %}
+                {% for poi in pois %}
+                    <li>
+                        <article>
+                            <h3><a href="{{ poi.get_absolute_url }}">{{ poi.title }}</a></h3>
+                            <p><a href="{% url "records:poi-list" %}">Точки интереса</a></p>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+
+            {% if posts %}
+                {% for post in posts %}
+                    <li>
+                        <article>
+                            <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                            <p><a href="{% url "records:post-list" %}">Публикации</a></p>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+
+            {% if transports %}
+                {% for transport in transports %}
+                    <li>
+                        <article>
+                            <h3><a href="{{ transport.get_absolute_url }}">{{ transport.model }} - {{ transports.driver }}</a></h3>
+                            <p><a href="{% url "records:transport-list" %}">Транспорт</a></p>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+
+            {% if events %}
+                {% for event in events %}
+                    <li>
+                        <article>
+                            <h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
+                            <p><a href="{% url "records:events-list" %}">Мероприятия</a></p>
+                        </article>
+                    </li>
+                {% endfor %}
+            {% endif %}
+
+
+            {% if tours %}
+                {% for tour in tours %}
+                    <li>
+                        <article>
+                            <h3><a href="{{ tour.get_absolute_url }}">{{ tour.title }}</a></h3>
+                            <p><a href="{% url "records:tour-list" %}">Туры</a></p>
                         </article>
                     </li>
                 {% endfor %}

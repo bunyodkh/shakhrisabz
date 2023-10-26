@@ -117,14 +117,14 @@ def search(request):
         query = request.GET.get('query')
         print(query)
         try:
-            hotels = Hotel.objects.filter(Q(title__contains=query) | Q(description__contains=query))
-            restaurants = Restaurant.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+            hotels = Hotel.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
+            restaurants = Restaurant.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
             organizations = Organization.objects.filter(Q(title__contains=query) | Q(description__contains=query))
-            guides = Guide.objects.filter(Q(first_name__contains=query) | Q(last_name__contains=query))
-            posts = Post.objects.filter(Q(title__contains=query) | Q(description__contains=query))
-            pois = POI.objects.filter(Q(title__contains=query) | Q(description__contains=query))
-            transports = Transport.objects.filter(Q(model__contains=query) | Q(driver__contains=query))
-            events = Event.objects.filter(Q(title__contains=query) | Q(description__contains=query))
+            guides = Guide.objects.filter(Q(first_name__contains=query) | Q(last_name__contains=query)) # included
+            posts = Post.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
+            pois = POI.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
+            transports = Transport.objects.filter(Q(model__contains=query) | Q(driver__contains=query)) # included
+            events = Event.objects.filter(Q(title__contains=query) | Q(description__contains=query)) # included
             tours = Tour.objects.filter(Q(title__contains=query) | Q(description__contains=query))
         except:
             hotels = None
