@@ -219,6 +219,7 @@ class Post(models.Model):
 class POI(models.Model):  # points of interest
     title = models.CharField('Название', max_length=100, null=False, blank=False)
     description = models.TextField('Описание', blank=True, null=True)
+    address = models.CharField('Адрес', max_length=1000, null=True, blank=True)
 
     TYPE_CHOICES = (
         ('geology', 'Геологические объекты'),

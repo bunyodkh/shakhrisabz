@@ -36,6 +36,7 @@ class POIAdmin(admin.ModelAdmin):
             'fields': (
                 'title',
                 'description',
+                'address',
                 'poi_type',
                 'city',
                 'location'
