@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
-from itertools import chain
 import json
 
 from .models import (
@@ -15,9 +14,9 @@ from .models import (
     Post,
     Event,
     Transport,
-    Subscription
-
+    Subscription,
 )
+
 from helpers.utils import email_valid
 
 
@@ -111,12 +110,9 @@ def subscribe(request):
     return redirect('/')
 
 
-
-
 def search(request):
     query = None
     hotels = restaurants = organizations = guides = posts = pois = transports = events = tours = None
-    results = None
     if request.method == 'GET':
         query = request.GET.get('query')
         print(query)
@@ -144,5 +140,12 @@ def search(request):
     return render(request, 'search.html', {
         'hotels': hotels,
         'query': query,
-        'guides': guides
+        'restaurants': restaurants,
+        'organizations': organizations,
+        'pois': pois,
+        'posts': posts,
+        'transports': transports,
+        'events': events,
+        'tours': tours,
+        'guides': guides,
     })

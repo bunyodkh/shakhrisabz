@@ -439,6 +439,7 @@ header.section-header .btn {
 }
 
 .one-to-four article header p {
+    width: 30%;
     border-radius: .5rem;
     padding: .5rem;
     font-size: .875rem;
@@ -577,6 +578,7 @@ footer input[type="submit"] {
 }
 
 .guide-card {
+    width: 30%;
     display: grid;
     grid-template-columns: 100px 1fr;
     grid-template-rows: 1fr 1fr;

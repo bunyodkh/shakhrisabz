@@ -25,7 +25,7 @@
 
             async function postJSON(data) {
                 try {
-                    const response = await fetch("subscribe/", {
+                    const response = await fetch("{% url 'records:subscribe' %}", {
                         method: "POST", // or 'PUT'
                         headers: {
                             "Content-Type": "application/json",
