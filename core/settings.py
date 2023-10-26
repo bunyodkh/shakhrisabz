@@ -4,11 +4,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-hhtql%rfo796(+-ak#iv+l6vzi=-k)v0flaxdx9^$i@ab8))si'
 
-DEBUG = False
+DEBUG = True
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
-ALLOWED_HOSTS = ['138.197.190.63']
+ALLOWED_HOSTS = ['138.197.190.63', '*']
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -92,12 +92,10 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
-STATIC_ROOT = '/var/www/shakhrisabz/static'
+STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
-MEDIA_ROOT = '/var/www/shakhrisabz/media'
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

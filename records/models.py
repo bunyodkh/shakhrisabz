@@ -538,3 +538,25 @@ class Tour(models.Model):
 
     def get_absolute_url(self, **kwargs):
         return reverse('records:tour-detail', kwargs={'pk': self.id})
+
+
+class MainBanner(models.Model):
+    image = models.ImageField(upload_to=path_and_rename('uploads/main_banner'), null=False, blank=False)
+    first_line_text = models.CharField('Первая строка', max_length=400, null=True, blank=True,
+                                       default='Добро пожаловать в')
+    second_line_text = models.CharField('Вторая строка', max_length=400, null=True, blank=True, default='Шахрисабз!')
+    third_line_text = models.CharField('Третья строка', max_length=400, null=True, blank=True,
+                                       default='Один из древнейших городов Узбекистана с историческим центром, внесенным в объекты Всемирного наследия ЮНЕСКО.!')
+
+    active = models.BooleanField('Активный', default=False)
+
+    created = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created']
+        verbose_name = 'Главный баннер'
+        verbose_name_plural = 'Главные баннеры'
+
+    def __str__(self) -> str:
+        return f'{self.first_line_text}'

@@ -1,18 +1,31 @@
 {% extends 'layouts/base.html' %}
+{% load static %}
 {% load extras %}
+
 
 {% block content %}
     <header class="full-bleed">
 
         {% categories %}
 
-        <div id="banner">
-            <div class="wrapper">
-                <h1>Добро пожаловать в <strong>Шахрисабз!</strong></h1>
-                <p>Один из древнейших городов Узбекистана с историческим центром, внесенным в объекты Всемирного
-                    наследия ЮНЕСКО.</p>
+        {% if banner %}
+            <div class="banner" style="background: url({{ banner.image.url }}) center center no-repeat; background-size: cover;">
+                <div class="wrapper">
+                    <h1>{{ banner.first_line_text }}</h1>
+                    <h1 class="main-text"><strong>{{ banner.second_line_text }}</strong></h1>
+                    <p>{{ banner.third_line_text }}</p>
+                </div>
             </div>
-        </div>
+        {% else %}
+            <div class="banner" style="background: url({% static 'images/bg-header.jpeg' %}) center center no-repeat; background-size: cover;">
+                <div class="wrapper">
+                    <h1>Добро пожаловать в <strong>Шахрисабз!</strong></h1>
+                    <p>Один из древнейших городов Узбекистана с историческим центром, внесенным в объекты Всемирного
+                        наследия ЮНЕСКО.</p>
+                </div>
+            </div>
+        {% endif %}
+
         <div class="card wrapper">
             <h2>Поиск по реестру</h2>
             <form action="{% url 'records:search' %}" method="GET">
@@ -86,7 +99,7 @@
             <header class="section-header">
                 <h1>Местные гиды</h1>
                 <p>Познакомьтесь с гидами, которые помогут вам ориентироваться в городе и районе Шахрисабз.</p>
-{#                <a href="" class="btn btn-primary btn-outline btn-small">Больше</a>#}
+                {#                <a href="" class="btn btn-primary btn-outline btn-small">Больше</a>#}
             </header>
 
             <ul class="mt-2">
@@ -97,7 +110,8 @@
                         {% endif %}
 
                         <a href="{{ guide.get_absolute_url }}"><strong>{{ guide.get_fullname }}</strong></a>
-                        <p>{% if guide.phone %}{{ guide.phone }}{% endif %} {% if guide.email %}- {{ guide.email }}{% endif %}</p>
+                        <p>{% if guide.phone %}{{ guide.phone }}{% endif %} {% if guide.email %}-
+                            {{ guide.email }}{% endif %}</p>
                     </li>
                 {% endfor %}
             </ul>

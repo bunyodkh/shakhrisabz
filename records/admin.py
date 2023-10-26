@@ -13,6 +13,7 @@ from .models import (
     Event, EventImage,
     ImageGallery, ImageGalleryImage,
     Tour,
+    MainBanner
 )
 
 
@@ -294,3 +295,4 @@ admin.site.register(Category)
 admin.site.register(Subscription)
 admin.site.register(Tour)
 admin.site.register(Post)
+admin.site.register(MainBanner)

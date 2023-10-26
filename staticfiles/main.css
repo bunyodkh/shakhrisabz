@@ -303,14 +303,12 @@ nav#main > ul li ul li > a {
 }
 
 /* HEADER > BANNER */
-#banner {
-    background: url('images/bg-header.jpeg') center center no-repeat;
-    background-size: cover;
+.banner {
     height: 500px;
-    color: white;
+    color: #fff;
 }
 
-#banner h1 {
+.banner h1 {
     width: 15em;
     padding-top: 120px;
     font-size: 2.8rem;
@@ -318,12 +316,16 @@ nav#main > ul li ul li > a {
     line-height: 1.5em;
 }
 
-#banner h1 strong {
+.main-text {
+    padding-top: 0 !important;
+}
+
+.banner h1 strong {
     font-size: 5rem;
     font-weight: bold;
 }
 
-#banner p {
+.banner p {
     font-size: 1.4rem;
     color: rgba(255, 255, 255, 0.8)
 }

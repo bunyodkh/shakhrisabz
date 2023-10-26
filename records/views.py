@@ -15,6 +15,7 @@ from .models import (
     Event,
     Transport,
     Subscription,
+    MainBanner,
 )
 
 from helpers.utils import email_valid
@@ -26,7 +27,8 @@ def index(request):
         'poi': POI.objects.first(),
         'hotels': Hotel.objects.all(),
         'guides': Guide.objects.all(),
-        'restaurants': Restaurant.objects.all()
+        'restaurants': Restaurant.objects.all(),
+        'banner': MainBanner.objects.filter(active=True).first()
     }
     return render(request, 'index.html', context)
 
