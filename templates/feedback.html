@@ -1,0 +1,35 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load extras %}
+
+{% block content %}
+
+    <header class="full-bleed">
+        {% categories %}
+    </header>
+
+    <ul class="breadcrumbs">
+        <li><a href="{% url 'records:index' %}">Главная</a></li>
+        <li><p>Форма обратной связи</p></li>
+    </ul>
+
+    <div class="card wrapper">
+        <h2 class="feedback-form-header">Напишите нам</h2>
+        <div class="feedback-form-wrapper">
+            <form action="{% url 'records:feedback' %}" method="POST" class="feedback-form">
+                <div class="feedback-form-group">
+                    <input type="text" class="form-control block" placeholder="Имя" name="name">
+                    <input type="email" class="form-control block" placeholder="Электронная почта" name="email">
+                    <textarea rows="8" type="text" class="form-control block" placeholder="Ваше сообщение"
+                              name="message"></textarea>
+                    <input type="submit" value="Отправить" class="btn">
+                </div>
+            </form>
+
+            <div class="feedback-form-img">
+                <img src="{% static 'images/fi.jpg' %}" alt="Статуя Амира Темура">
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

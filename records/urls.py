@@ -14,7 +14,8 @@ from .views import (
     get_transports, get_transport,
     get_events, get_event,
     subscribe,
-    search
+    search,
+    get_feedback_form
 )
 
 urlpatterns = [
@@ -52,5 +53,6 @@ urlpatterns = [
     path('subscribe/', subscribe, name='subscribe'),
     path('search/', search, name='search'),
 
+    path('feedback/', get_feedback_form, name='feedback'),
 
 ]

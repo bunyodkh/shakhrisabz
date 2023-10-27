@@ -180,3 +180,8 @@ def search(request):
         'tours': tours,
         'guides': guides,
     })
+
+
+def get_feedback_form(request):
+    context = {}
+    return render(request, 'feedback.html', context)

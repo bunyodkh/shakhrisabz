@@ -1011,3 +1011,53 @@ address {
 .page-news article p {
     margin-top: 1rem;
 }
+
+
+.block {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+
+.feedback-form-group .form-label {
+    font-size: 0.875rem;
+    background-color: var(--color-neutral, #fff);
+    position: absolute;
+    top: -0.6rem;
+    left: 12px;
+}
+
+.feedback-form-group input[type="text"],
+.feedback-form-group input[type="email"],
+.feedback-form-group textarea[type="text"],
+.feedback-form-group .btn {
+    border: 1px solid #79747E;
+    border-radius: 4px;
+    padding: 12px 10px;
+    width: 100%;
+}
+
+.feedback-form-group textarea[type="text"] {
+    resize: vertical;
+
+}
+
+.feedback-form-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.feedback-form,
+.feedback-form-img {
+    width: 49%;
+}
+
+.feedback-form-img img {
+    border-radius: 4px;
+}
+
+.feedback-form-header {
+    margin-bottom: 1.5rem;
+}
