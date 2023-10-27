@@ -113,6 +113,7 @@ class EventAdmin(admin.ModelAdmin):
         ('Общая информация', {
             'fields': (
                 'title',
+                'address',
                 'description',
                 'event_type',
                 'city',

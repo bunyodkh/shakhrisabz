@@ -12,6 +12,7 @@ from .views import (
     get_organizations, get_organization,
     get_posts, get_post,
     get_transports, get_transport,
+    get_events, get_event,
     subscribe,
     search
 )
@@ -41,6 +42,9 @@ urlpatterns = [
 
     path('transports/', get_transports, name='transport-list'),
     path('transports/<int:pk>', get_transport, name='transport-detail'),
+
+    path('events/', get_events, name='event-list'),
+    path('events/<int:pk>', get_event, name='event-detail'),
 
     path('subscribe/', subscribe, name='subscribe'),
     path('search/', search, name='search')

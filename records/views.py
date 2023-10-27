@@ -116,6 +116,17 @@ def get_transport(request, *args, **kwargs):
     return render(request, 'transport.html', context)
 
 
+def get_events(request):
+    context = {'events': Event.objects.all()}
+    return render(request, 'events.html', context)
+
+
+def get_event(request, *args, **kwargs):
+    event_id = kwargs['pk']
+    context = {'event': Event.objects.get(pk=event_id)}
+    return render(request, 'event.html', context)
+
+
 def subscribe(request):
     if request.method == 'POST':
         data = json.loads(request.body)

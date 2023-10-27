@@ -401,6 +401,7 @@ class Category(models.Model):
 class Event(models.Model):
     title = models.CharField('Название', max_length=100, null=False, blank=False)
     description = models.TextField('Описание', null=True, blank=True)
+    address = models.TextField('Адрес', max_length=1000, null=True, blank=True)
 
     TYPE_CHOICES = (
         ('Ad', 'Анонс'),
@@ -420,6 +421,12 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+    def eventtype_verbose(self):
+        return dict(Event.TYPE_CHOICES)[self.event_type]
+
+    def get_absolute_url(self, **kwargs):
+        return reverse('records:event-detail', kwargs={'pk': self.id})
 
     class Meta:
         ordering = ['-created']
