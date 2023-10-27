@@ -46,7 +46,11 @@ urlpatterns = [
     path('events/', get_events, name='event-list'),
     path('events/<int:pk>', get_event, name='event-detail'),
 
+    path('posts/', get_posts, name='post-list'),
+    path('post/<int:pk>', get_post, name='post-detail'),
+
     path('subscribe/', subscribe, name='subscribe'),
-    path('search/', search, name='search')
+    path('search/', search, name='search'),
+
 
 ]
