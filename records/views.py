@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.db.models import Q
 import json
+import requests
+
+from .forms import FeedbackForm
 
 from .models import (
     Category,
@@ -183,5 +186,25 @@ def search(request):
 
 
 def get_feedback_form(request):
-    context = {}
-    return render(request, 'feedback.html', context)
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            ''' Begin reCAPTCHA validation '''
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            data = {
+                'secret': '6LdDmNMoAAAAABu5rfHHqvZPiRC6OT3ZKvLEmSAa',
+                'response': recaptcha_response
+            }
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+
+            result = r.json()
+
+            if result['success']:
+                form.save()
+                return render(request, 'feedback.html', {'message': 'Мы получили ваше сообщение. Спасибо!', 'ok': True })
+            else:
+                return render(request, 'feedback.html', {
+                    'message': 'Проверка обязательно. Пожалуйста, отметье галочку перед тем как отправить сообщение.', 'error': True })
+        else:
+            return render(request, 'feedback.html', {'message': 'Что-то пошло не так. Попробуйте снова.', 'error': True })
+    return render(request, 'feedback.html', {})

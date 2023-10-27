@@ -1061,3 +1061,29 @@ address {
 .feedback-form-header {
     margin-bottom: 1.5rem;
 }
+
+.feedback-msg-box {
+    padding: 1rem;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+}
+
+.feedback-msg-box-success {
+    padding: 1rem;
+    border: 1px solid #005200;
+    border-radius: 4px;
+    background-color: #ecffec;
+    color: #005800;
+}
+
+.feedback-msg-box-error {
+    padding: 1rem;
+    border: 1px solid #520000;
+    border-radius: 4px;
+    background-color: #ffecec;
+    color: #580000;
+}
+
+

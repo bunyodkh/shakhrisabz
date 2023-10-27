@@ -453,13 +453,15 @@ class EventImage(models.Model):
 
 
 class Feedback(models.Model):
-    title = models.CharField(max_length=100, null=False, blank=False)
+    full_name = models.CharField('Имя', max_length=100, null=True, blank=True)
+    email = models.CharField('Электронная почта', max_length=100, null=True, blank=True)
+    message = models.TextField('Сообщение', max_length=1000, null=True, blank=True)
 
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return f'{self.full_name} - {self.email}'
 
     class Meta:
         ordering = ['-created']
