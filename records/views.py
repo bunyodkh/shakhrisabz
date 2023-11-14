@@ -201,10 +201,22 @@ def get_feedback_form(request):
 
             if result['success']:
                 form.save()
-                return render(request, 'feedback.html', {'message': 'Мы получили ваше сообщение. Спасибо!', 'ok': True })
+                return render(request, 'feedback.html', {'message': 'Мы получили ваше сообщение. Спасибо!', 'ok': True})
             else:
                 return render(request, 'feedback.html', {
-                    'message': 'Проверка обязательно. Пожалуйста, отметье галочку перед тем как отправить сообщение.', 'error': True })
+                    'message': 'Проверка обязательно. Пожалуйста, отметье галочку перед тем как отправить сообщение.',
+                    'error': True})
         else:
-            return render(request, 'feedback.html', {'message': 'Что-то пошло не так. Попробуйте снова.', 'error': True })
+            return render(request, 'feedback.html',
+                          {'message': 'Что-то пошло не так. Попробуйте снова.', 'error': True})
     return render(request, 'feedback.html', {})
+
+
+# serves 404.html page
+def e_handler404(request, exception=None):
+    return render(request, '404.html', {}, status=404)
+
+
+# serves 500.html page
+def e_handler500(request, exception=None):
+    return render(request, '500.html', {}, status=500)

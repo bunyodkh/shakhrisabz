@@ -1,0 +1,78 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load extras %}
+
+
+{% block content %}
+    <style>
+        .page-404 {
+            text-align: center;
+        }
+
+        .page-404 h1 {
+            font-size: 10em;
+            background: -webkit-linear-gradient(#41846d, var(--color-primary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 575.98px) {
+            .page-404 h1 {
+                font-size: 6em;
+            }
+        }
+    </style>
+
+    <header class="full-bleed">
+
+        {% categories %}
+
+        {% if banner %}
+            <div class="banner"
+                 style="background: url({{ banner.image.url }}) center center no-repeat; background-size: cover;">
+                <div class="wrapper">
+                    <h1>{{ banner.first_line_text }}</h1>
+                    <h1 class="main-text"><strong>{{ banner.second_line_text }}</strong></h1>
+                    <p>{{ banner.third_line_text }}</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="banner"
+                 style="background: url({% static 'images/bg-header.jpeg' %}) center center no-repeat; background-size: cover;">
+                <div class="wrapper">
+                    <h1>Добро пожаловать в <strong>Шахрисабз!</strong></h1>
+                    <p>Один из древнейших городов Узбекистана с историческим центром, внесенным в объекты Всемирного
+                        наследия ЮНЕСКО.</p>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="card wrapper">
+            <h2>Поиск по реестру</h2>
+            <form action="{% url 'records:search' %}" method="GET">
+                <div class="form-group horizontal">
+                    <input type="text" id="name" class="form-control" placeholder="Отели, гиды, туры ..." name="query">
+                    <input type="submit" value="Поиск" class="btn">
+                </div>
+            </form>
+        </div>
+    </header>
+
+
+    <main class="page-404">
+        <div class="card">
+            <h1>404</h1>
+            <p>Произошла ошибка. По данной ссылке ничего не найдено.</p>
+        </div>
+    </main>
+
+
+{% endblock content %}
+
+
+
+
+
+
+

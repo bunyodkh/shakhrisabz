@@ -19,11 +19,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from records.views import e_handler404, e_handler500
+
 
 urlpatterns = [
     path('', include('records.urls')),
     path('admin/', admin.site.urls),
 ]
+
+
+handler404 = e_handler404
+handler500 = e_handler500
 
 
 if settings.DEBUG:
