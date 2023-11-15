@@ -8,39 +8,39 @@
     </header>
 
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><p>Туры</p></li>
     </ul>
 
-    <main class="page-guides">
+    <main class="section page-guides">
         <header>
-            <h1>Доступные туры</h1>
+            <h1 class="organizations-header mt-2">Доступные туры</h1>
         </header>
         <ul class="mt-2">
             {% for tour in tours %}
                 <li>
-                    <article>
-                        <img src="{{ tour.image.url }}" alt="{{ tour.title }}"/>
-                        <div>
+                    <article class="organization-card">
+                        {% if tour.image %}
+                            <img src="{{ tour.image.url }}" alt="{{ tour.title }}"/>
+                        {% endif %}
+                        <div class="organization-title">
                             <header>
                                 <h1><a href="{{ tour.get_absolute_url }}">{{ tour.title }}</a></h1>
-                                <p>Стартует от<strong>{{ tour.price }}<small>/чел.</small></strong></p>
+                                <p><strong>{{ tour.price }}/чел.</strong></p>
                             </header>
-                            <address><i class="fa-location-dot fa-solid"></i> {{ tour.address }}
-                            </address>
-                            <p>{{ tour.description|truncatewords:30 }}</p>
-                            {% if tour.company %}
-                            	<p>Организатор: {{ tour.company }}</p>
-                            {% endif %}
+                            <address><i class="fa-location-dot fa-solid"></i> {{ tour.address }}</address>
                             {% if tour.guide %}
-                            	<p>Гид: {{ tour.guide }}</p>
+                                <p>Гид: {{ tour.guide }}</p>
                             {% endif %}
+                            <p>{{ organization.description }}</p>
                         </div>
                     </article>
                 </li>
             {% endfor %}
         </ul>
     </main>
+
+
 
 {% endblock content %}
