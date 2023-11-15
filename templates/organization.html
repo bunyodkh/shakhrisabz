@@ -8,11 +8,11 @@
 
     <ul class="section breadcrumbs mt-2 mb-2">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
-        <li><a href="{% url 'records:hotel-list' %}">Все организации</a></li>
+        <li><a href="{% url 'records:organization-list' %}">Все организации</a></li>
         <li>{{ organization.title | truncatechars:20}}</li>
     </ul>
 
-    <main class="page-hotels">
+    <main class="section page-hotels">
         <header>
             <h1>{{ organization.title }}</h1>
             <address><i class="fa-solid fa-location-dot"></i> {{ organization.address }}</address>

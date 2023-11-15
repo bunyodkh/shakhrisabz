@@ -15,12 +15,12 @@
 
     <main class="section page-guides">
         <header>
-            <h1>Организации Шахрисабза</h1>
+            <h1 class="organizations-header">Организации Шахрисабза</h1>
         </header>
         <ul class="mt-2">
             {% for organization in organizations %}
                 <li>
-                    <article>
+                    <article class="organization-card">
                         {% for image in organization.organizationimage_set.all %}
                         	{% if image.main %}
                         		<img src="{{ image.image.url }}" alt="{{ image.caption }}"/>
@@ -31,9 +31,9 @@
                                 <h1><a href="{{ organization.get_absolute_url }}">{{ organization.title }}</a></h1>
                                 <p><strong>{{ organization.orgtype_verbose }}</strong></p>
                             </header>
-                            <address><i class="fa-location-dot fa-solid"></i> {{ organization.address }}
-                            </address>
-                            <p>{{ organization.description }}</p>
+{#                            <address><i class="fa-location-dot fa-solid"></i> {{ organization.address }}#}
+{#                            </address>#}
+{#                            <p>{{ organization.description }}</p>#}
                         </div>
                     </article>
                 </li>

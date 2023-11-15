@@ -19,7 +19,7 @@
             {% if poi.address %}
             	<address><i class="fa-solid fa-location-dot"></i> {{ poi.address }}</address>
             {% endif %}
-            <strong class="price">{{ poi.poitype_verbose }}</strong>
+            <strong class="poi-type">{{ poi.poitype_verbose }}</strong>
         </header>
 
         {% if poi.poiimage_set.all %}
