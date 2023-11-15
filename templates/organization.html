@@ -20,7 +20,7 @@
 
         {% if organization.organizationimage_set.all %}
             <ul class="gallery mt-2">
-                {% for item in hotel.organizationimage_set.all %}
+                {% for item in organization.organizationimage_set.all %}
                     <li><img src="{{ item.image.url }}" alt="{{ image.caption }}"/></li>
                 {% endfor %}
             </ul>
