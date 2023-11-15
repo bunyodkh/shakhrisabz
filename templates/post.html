@@ -10,7 +10,7 @@
     <ul class="breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><a href="{% url 'records:post-list' %}">Все публикации</a></li>
-    <li><p>{{ post.title }}</p></li>
+    <li><p>{{ post.title | truncatechars:25  }}</p></li>
     </ul>
 
     <main class="page-news">

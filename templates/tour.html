@@ -11,7 +11,7 @@
     <ul class="breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><a href="{% url 'records:tour-list' %}">Все туры</a></li>
-        <li><p>{{ tour.title }}</p></li>
+        <li><p>{{ tour.title  | truncatechars:25 }}</p></li>
     </ul>
 
     <main class="page-guides">

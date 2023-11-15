@@ -9,7 +9,7 @@
     <ul class="breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><a href="{% url 'records:transport-list' %}">Все доступные виды транспорта</a></li>
-        <li>{{ transport.model }} - {{ transport.driver }}</li>
+        <li>{{ transport.model | truncatechars:10 }} - {{ transport.driver  | truncatechars:10 }}</li>
     </ul>
 
     <main class="page-profile mt-3">
