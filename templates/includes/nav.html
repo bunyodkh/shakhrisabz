@@ -1,29 +1,53 @@
 {% load extras %}
 
-<nav id="main">
-     <input id="menu-toggle" type="checkbox" />
-        <label class='menu-button-container' for="menu-toggle">
-            <div class='menu-button'></div>
-        </label>
+<nav class="section nav">
+    <div class="logo">
+        <a href="{% url 'records:index' %}" title="Shahrisabz">Главная</a>
+    </div>
 
-    <ul class="wrapper horizontal">
-        <li><a href="{% url 'records:index' %}" title="Shahrisabz">Главная</a></li>
+    <div id="hamburger-btn" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
+    <ul class="nav-items">
         {% for category in categories %}
             {% if category.visible_on_main %}
-                <li class="">
+                <li class="nav-item">
                     <p>{{ category }}</p>
 
                     {% if category.category_set.all %}
-                        <ul>
+                        <ul class="sub-items">
                             {% for category in category.category_set.all %}
-                                <li><a href="{% url 'records:index' %}{{ category.slug }}">{{ category.title }}</a></li>
+                                <li class="sub-item"><a
+                                        href="{% url 'records:index' %}{{ category.slug }}">{{ category.title }}</a>
+                                </li>
                             {% endfor %}
                         </ul>
                     {% endif %}
                 </li>
             {% endif %}
         {% endfor %}
+    </ul>
 
+    <ul class="mobile-nav-items">
+        {% for category in categories %}
+            {% if category.visible_on_main %}
+                <li class="mobile-nav-item">
+                    <p>{{ category }}</p>
+
+                    {% if category.category_set.all %}
+                        <ul class="mobile-sub-items">
+                            {% for category in category.category_set.all %}
+                                <li class="mobile-sub-item"><a
+                                        href="{% url 'records:index' %}{{ category.slug }}">{{ category.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
     </ul>
 </nav>

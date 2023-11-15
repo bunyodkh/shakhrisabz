@@ -6,19 +6,19 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs mt-2 mb-2">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><p>Все рестораны и кафе</p></li>
     </ul>
 
-    <section class="gallery-list wrapper mt-0">
+    <section class="section gallery-list mt-0">
         <header class="section-header">
             <h1>Рестораны и кафе Шахрисабза</h1>
         </header>
         <ul class="horizontal mt-2">
             {% if restaurants %}
                 {% for restaurant in restaurants %}
-                    <li class="card">
+                    <li class="vertical-card">
                         <article style="background-image: url('{{ restaurant.main_image.url }}')">
                             <div class="info">
                                 <header>

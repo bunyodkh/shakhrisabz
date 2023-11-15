@@ -2,24 +2,23 @@
 {% load extras %}
 
 {% block content %}
-
     <header class="full-bleed">
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="breadcrumbs section mt-2 mb-2">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><p>Все отели</p></li>
     </ul>
 
-    <section class="gallery-list wrapper mt-0">
+    <section class="section gallery-list mt-0">
         <header class="section-header">
             <h1>Отели Шахрисабза</h1>
         </header>
         <ul class="horizontal mt-2">
             {% if hotels %}
                 {% for hotel in hotels %}
-                    <li class="card">
+                    <li class="vertical-card">
                         <article style="background-image: url('{{ hotel.main_image.url }}')">
                             <div class="info">
                                 <header>
@@ -34,5 +33,4 @@
             {% endif %}
         </ul>
     </section>
-
 {% endblock content %}

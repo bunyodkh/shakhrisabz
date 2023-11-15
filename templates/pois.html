@@ -7,12 +7,12 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs mt-2 mb-2">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><p>Все точки интереса</p></li>
     </ul>
 
-    <section class="one-to-four wrapper mt-4">
+    <section class="section one-to-four mt-4">
         {% for poi in pois %}
             <div class="items mt-2">
                 {% if poi %}

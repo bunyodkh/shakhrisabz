@@ -6,13 +6,13 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs mt-2 mb-2">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><a href="{% url 'records:restaurant-list' %}">Все рестораны и кафе</a></li>
         <li>{{ restaurant.title }}</li>
     </ul>
 
-    <main class="page-hotels">
+    <main class="section page-hotels">
         <header>
             <h1>{{ restaurant.title }}</h1>
             <address><i class="fa-solid fa-location-dot"></i> {{ restaurant.address }}</address>
@@ -37,7 +37,7 @@
         {% endif %}
 
         {% if restaurant.meal_set.all %}
-            <section>
+            <section class="meal-list">
                 <h3>Меню</h3>
                 <ul class="list">
                     {% for meal in restaurant.meal_set.all %}

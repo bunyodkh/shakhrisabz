@@ -4,13 +4,13 @@
 
 
 {% block content %}
-    <header class="full-bleed">
+    <header class="header">
 
         {% categories %}
 
         {% if banner %}
             <div class="banner" style="background: url({{ banner.image.url }}) center center no-repeat; background-size: cover;">
-                <div class="wrapper">
+                <div class="section">
                     <h1>{{ banner.first_line_text }}</h1>
                     <h1 class="main-text"><strong>{{ banner.second_line_text }}</strong></h1>
                     <p>{{ banner.third_line_text }}</p>
@@ -18,7 +18,7 @@
             </div>
         {% else %}
             <div class="banner" style="background: url({% static 'images/bg-header.jpeg' %}) center center no-repeat; background-size: cover;">
-                <div class="wrapper">
+                <div class="section">
                     <h1>Добро пожаловать в <strong>Шахрисабз!</strong></h1>
                     <p>Один из древнейших городов Узбекистана с историческим центром, внесенным в объекты Всемирного
                         наследия ЮНЕСКО.</p>
@@ -26,7 +26,7 @@
             </div>
         {% endif %}
 
-        <div class="card wrapper">
+        <div class="section search-bar">
             <h2>Поиск по реестру</h2>
             <form action="{% url 'records:search' %}" method="GET">
                 <div class="form-group horizontal">
@@ -37,7 +37,7 @@
         </div>
     </header>
 
-    <section class="gallery-list wrapper mt-6">
+    <section class="section gallery-list mt-6">
         <header class="section-header">
             <h1>Проживание</h1>
             <p>Получите актуальную информацию про места для проживания в городе и районе Шахрисабз.</p>
@@ -46,7 +46,7 @@
         <ul class="horizontal mt-2">
             {% if hotels %}
                 {% for hotel in hotels %}
-                    <li class="card">
+                    <li class="vertical-card">
                         <article style="background-image: url('{{ hotel.main_image.url }}')">
                             <div class="info">
                                 <header>
@@ -65,7 +65,7 @@
         </ul>
     </section>
 
-    <section class="one-to-four wrapper mt-4">
+    <section class="section one-to-four mt-4">
         <header class="section-header">
             <h1>Чем можно заняться?</h1>
             <p>Узнайте чем можно заняться и какие места можно посетить в городе и районе Шахрисабз.</p>
@@ -95,14 +95,13 @@
     </section>
 
     {% if guides %}
-        <section class="guides-list mt-6">
+        <section class="section guides-list mt-6">
             <header class="section-header">
                 <h1>Местные гиды</h1>
                 <p>Познакомьтесь с гидами, которые помогут вам ориентироваться в городе и районе Шахрисабз.</p>
-                {#                <a href="" class="btn btn-primary btn-outline btn-small">Больше</a>#}
             </header>
 
-            <ul class="mt-2">
+            <ul class="guide-cards mt-2">
                 {% for guide in guides %}
                     <li class="card guide-card">
                         {% if guide.image %}
@@ -119,7 +118,7 @@
     {% endif %}
 
     {% if restaurants %}
-        <section class="gallery-list wrapper mt-6">
+        <section class="section gallery-list mt-4">
             <header class="section-header">
                 <h1>Где поесть?</h1>
                 <p>Получите актуальную информацию о ресторанах и кафе в городе и районе Шахрисабз.</p>
@@ -128,7 +127,7 @@
             <ul class="horizontal mt-2">
                 {% if restaurants %}
                     {% for restaurant in restaurants %}
-                        <li class="card">
+                        <li class="vertical-card">
                             <article style="background-image: url('{{ restaurant.main_image.url }}')">
                                 <div class="info">
                                     <header>
