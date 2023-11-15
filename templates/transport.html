@@ -6,13 +6,13 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
-        <li><a href="{% url 'records:index' %}">Главная</a></li>
+    <ul class="section breadcrumbs">
+{#        <li><a href="{% url 'records:index' %}">Главная</a></li>#}
         <li><a href="{% url 'records:transport-list' %}">Все доступные виды транспорта</a></li>
         <li>{{ transport.model | truncatechars:10 }} - {{ transport.driver  | truncatechars:10 }}</li>
     </ul>
 
-    <main class="page-profile mt-3">
+    <main class="section page-profile mt-3">
         <header style="background-image: url({{ transport.transport_image.url }});">
             {% if transport.driver_image %}
                 <div class="img" style="background-image: url({{ transport.driver_image.url }});"></div>

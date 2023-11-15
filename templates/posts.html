@@ -7,12 +7,12 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><p>Все публикации</p></li>
     </ul>
 
-    <main class="page-news">
+    <main class="section page-news">
         <h1>Публикации</h1>
         <ul class="card">
             {% for post in posts %}

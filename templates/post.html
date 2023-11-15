@@ -7,14 +7,14 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><a href="{% url 'records:post-list' %}">Все публикации</a></li>
     <li><p>{{ post.title | truncatechars:20  }}</p></li>
     </ul>
 
-    <main class="page-news">
-        <article class="card">
+    <main class="section page-news">
+        <article class="card pd-2">
             <h1>{{ post.title }}</h1>
             <time>{{ post.date }}</time> <span>{{ post.posttype_verbose }}</span>
             <p>{{ post.description }}</p>

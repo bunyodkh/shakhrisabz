@@ -7,12 +7,12 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><p>Все мероприятия / анонсы / события</p></li>
     </ul>
 
-    <section class="one-to-four wrapper mt-4">
+    <section class="section one-to-four mt-4">
         {% for event in events %}
             <div class="items mt-2">
                 {% if event %}

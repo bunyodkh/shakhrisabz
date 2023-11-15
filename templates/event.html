@@ -7,13 +7,13 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
-        <li><a href="{% url 'records:event-list' %}">Все мероприятия / анонсы / события</a></li>
+        <li><a href="{% url 'records:event-list' %}">{{ 'Все мероприятия / анонсы / события'|truncatechars:10 }}</a></li>
         <li><p>{{ event.title | truncatechars:20 }}</p></li>
     </ul>
 
-    <main class="page-hotels">
+    <main class="section page-hotels mt-2">
         <header>
             <h1>{{ event.title }}</h1>
             {% if event.address %}

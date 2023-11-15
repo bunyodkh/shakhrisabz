@@ -7,19 +7,19 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><p>Все доступные виды транспорта</p></li>
     </ul>
 
-    <section class="gallery-list wrapper mt-0">
+    <section class="section gallery-list mt-2">
         <header class="section-header">
             <h1>Информация о траспортных средствах и водителях</h1>
         </header>
         <ul class="horizontal mt-2">
             {% if transports %}
                 {% for transport in transports %}
-                    <li class="card">
+                    <li class="vertical-card">
                         <article style="background-image: url({{ transport.transport_image.url }})">
                             <div class="info">
                                 <header>
