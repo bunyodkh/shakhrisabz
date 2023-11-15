@@ -8,12 +8,12 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="breadcrumbs section">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><p>Форма обратной связи</p></li>
     </ul>
 
-    <div class="card wrapper">
+    <div class="card section">
         <p class="{% if error %}feedback-msg-box-error{% endif %}{% if ok %}feedback-msg-box-success{% endif %}">{{ message }}</p>
         <h2 class="feedback-form-header">Напишите нам</h2>
         <div class="feedback-form-wrapper">

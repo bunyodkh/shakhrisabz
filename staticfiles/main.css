@@ -1016,6 +1016,7 @@ address {
 .feedback-form-wrapper {
     display: flex;
     justify-content: space-between;
+    padding: 2rem;
 }
 
 
@@ -1030,6 +1031,7 @@ address {
 
 .feedback-form-header {
     margin-bottom: 1.5rem;
+    padding: 2rem;
 }
 
 .feedback-msg-box {
@@ -1350,6 +1352,35 @@ address {
     header address {
         margin-top: 1.5rem;
     }
+
+    .page-hotels header .price {
+        top: 2.1rem;
+    }
+
+    .feedback-form-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .feedback-form { width: 100%; }
+    .feedback-form-img {
+        display: none;
+    }
+
+    .feedback-form-header {
+        padding: 1rem;
+        margin-bottom: 0;
+    }
+
+    .feedback-form-group .btn {
+        margin-top: 1rem;
+    }
+
+    footer {
+        padding-top: 1rem;
+    }
+
 }
 
 
