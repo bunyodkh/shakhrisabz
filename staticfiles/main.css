@@ -1260,6 +1260,75 @@ address {
     .page-hotels header h1 {
         font-size: 1.2rem;
     }
+
+    .list li strong {
+        font-size: 1rem;
+    }
+
+    .list li p {
+        font-size: 0.8rem;
+    }
+
+    .vertical-card {
+        width: 100%;
+    }
+
+    .vertical-card > article {
+        height: 200px;
+    }
+
+    .gallery-list li article .info h1 a {
+        display: inline-block;
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .one-to-four .items {
+        flex-direction: column;
+    }
+
+    .one-to-four .items ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-height: 0;
+    }
+
+    .one-to-four .items li img {
+        height: 100%;
+    }
+
+    .one-to-four .items li {
+        border-radius: 0.5rem;
+        height: 35%;
+    }
+
+    .one-to-four article {
+        border-radius: 0.5rem;
+    }
+
+    .one-to-four .items h1 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 1.9rem;
+    }
+
+    .one-to-four article > p {
+        margin-bottom: 0;
+    }
+
+    .one-to-four .items > * {
+        min-height: 365px;
+    }
+
+    .guide-card {
+        min-width: 48%;
+    }
+
+    .one-to-four header p {
+        margin-top: 1.5rem;
+    }
 }
 
 
