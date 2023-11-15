@@ -1064,17 +1064,36 @@ address {
 }
 
 .mobile-nav-items {
-    display: none;
+    visibility: hidden;
+    position: absolute;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     background: #fff;
-    padding: 20px 0;
+    left: 0;
+    top: 75px;
 }
 
+.mobile-nav-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.mobile-sub-items {
+    margin-top: 1rem;
+}
+
+.mobile-sub-item {
+    padding: 0.2rem 0 0.2rem 2rem;
+}
+
+.mobile-sub-item > a::before {
+    content: '\2014';
+    margin-right: 0.5rem;
+}
 
 .show {
-    display: block;
+    visibility: visible;
 }
 
 /* RESPONSIVE */
@@ -1084,6 +1103,7 @@ address {
     }
 
     .hamburger {
+        z-index: 100;
         padding-top: 2rem;
         display: block;
     }
