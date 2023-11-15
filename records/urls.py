@@ -15,7 +15,8 @@ from .views import (
     get_events, get_event,
     subscribe,
     search,
-    get_feedback_form
+    get_feedback_form,
+    show404
 )
 
 urlpatterns = [
@@ -54,5 +55,7 @@ urlpatterns = [
     path('search/', search, name='search'),
 
     path('feedback/', get_feedback_form, name='feedback'),
+
+    path('404/', show404, name='404'),
 
 ]

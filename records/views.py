@@ -220,3 +220,7 @@ def e_handler404(request, exception=None):
 # serves 500.html page
 def e_handler500(request, exception=None):
     return render(request, '500.html', {}, status=500)
+
+
+def show404(request):
+    return render(request, '404.html', {})

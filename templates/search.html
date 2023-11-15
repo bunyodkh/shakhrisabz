@@ -7,12 +7,12 @@
         {% categories %}
     </header>
 
-    <ul class="breadcrumbs">
+    <ul class="section breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><p>Результаты поиска для запроса "{{ query }}"</p></li>
     </ul>
 
-    <main class="page-news">
+    <main class="section page-news">
         <h1>Результаты поиска для запроса "{{ query }}"</h1>
         <ul class="card">
             {% if guides %}
