@@ -10,7 +10,7 @@
     <ul class="section breadcrumbs mt-2 mb-2">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><a href="{% url 'records:poi-list' %}">Все точки интереса</a></li>
-        <li><p>{{ poi.title | truncatechars:25 }}</p></li>
+        <li><p>{{ poi.title | truncatechars:20 }}</p></li>
     </ul>
 
     <main class="section page-hotels">

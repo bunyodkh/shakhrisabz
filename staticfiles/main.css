@@ -1346,6 +1346,10 @@ address {
         left: 0;
         font-weight: normal;
     }
+
+    header address {
+        margin-top: 1.5rem;
+    }
 }
 
 

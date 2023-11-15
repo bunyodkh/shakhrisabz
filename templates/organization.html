@@ -9,7 +9,7 @@
     <ul class="section breadcrumbs mt-2 mb-2">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><a href="{% url 'records:hotel-list' %}">Все организации</a></li>
-        <li>{{ organization.title | truncatechars:20}} - {{ organization.orgtype_verbose | truncatechars:5}}</li>
+        <li>{{ organization.title | truncatechars:20}}</li>
     </ul>
 
     <main class="page-hotels">

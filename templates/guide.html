@@ -8,7 +8,7 @@
 
     <ul class="section breadcrumbs mt-2 mb-2">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
-        <li>{{ guide.get_fullname | truncatechars:25  }}</li>
+        <li>{{ guide.get_fullname | truncatechars:20  }}</li>
     </ul>
 
     <main class="section page-profile mt-3">

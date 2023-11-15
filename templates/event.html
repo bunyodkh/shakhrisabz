@@ -10,7 +10,7 @@
     <ul class="breadcrumbs">
         <li><a href="{% url 'records:index' %}">Главная</a></li>
         <li><a href="{% url 'records:event-list' %}">Все мероприятия / анонсы / события</a></li>
-        <li><p>{{ event.title | truncatechars:25 }}</p></li>
+        <li><p>{{ event.title | truncatechars:20 }}</p></li>
     </ul>
 
     <main class="page-hotels">
